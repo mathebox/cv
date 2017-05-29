@@ -8,7 +8,7 @@
 % Load LaTeX's moderncv class
 \LoadClass{moderncv}
 
-
+\RequirePackage{fontspec}
 \RequirePackage{fontawesome}
 
 
