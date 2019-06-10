@@ -8,14 +8,21 @@
 
 \documentclass[10pt,a4paper,sans]{maxbothe-cv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
 
+\newif\ifconfidential
+
+\confidentialtrue  % Uncomment to hide confidential information
+%\confidentialfalse  % Uncomment to show confidential information
+
 
 % personal data
 \name{Max}{Bothe}
 %\title{}                       % optional, remove / comment the line if not wanted
-\address{Ruppiner Str. 37}{13355 Berlin, Germany}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
-\phone[mobile]{+49~(0)~157~87606027}                  % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
-%\phone[fixed]{+2~(345)~678~901}
-%\phone[fax]{+3~(456)~789~012}
+
+\ifconfidential
+\else
+	\input{confidential}
+\fi
+
 \email{me@maxbothe.de}                         % optional, remove / comment the line if not wanted
 \homepage{maxbothe.de}                            % optional, remove / comment the line if not wanted
 \social[linkedin]{maxbothe}                         % optional, remove / comment the line if not wanted
