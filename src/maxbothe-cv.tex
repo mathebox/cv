@@ -5,11 +5,14 @@
 % conditions of the LaTeX Project Public License version 1.3c,
 % available at http://www.latex-project.org/lppl/.
 
+% possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+\documentclass[10pt,a4paper,sans]{maxbothe-cv}
 
-\documentclass[10pt,a4paper,sans]{maxbothe-cv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+% Remove dot at the end of a eventry
+\usepackage{xpatch}
+\xpatchcmd{\cventry}{.\strut}{\strut}{}{}
 
 \newif\ifconfidential
-
 \confidentialtrue  % Uncomment to hide confidential information
 %\confidentialfalse  % Uncomment to show confidential information
 
@@ -17,20 +20,19 @@
 % personal data
 \name{Max}{Bothe}
 %\title{}                       % optional, remove / comment the line if not wanted
-
-\ifconfidential
-\else
-	\input{confidential}
-\fi
-
 \email{me@maxbothe.de}                         % optional, remove / comment the line if not wanted
 \homepage{maxbothe.de}                            % optional, remove / comment the line if not wanted
 \social[linkedin]{maxbothe}                         % optional, remove / comment the line if not wanted
 \social[github]{mathebox}                          % optional, remove / comment the line if not wanted
 \social[researchgate][https://www.researchgate.net/profile/Max-Bothe]{ Max Bothe}
 %\extrainfo{additional information}                % optional, remove / comment the line if not wanted
-\photo[83pt][0pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+\photo[90pt][0pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
 %\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+\ifconfidential
+\else
+	\input{confidential}
+\fi
 
 
 %----------------------------------------------------------------------------------
@@ -61,51 +63,61 @@
 \textit{Master's thesis:} From MOOCs to Micro Learning: Optimizing mobile video-based learning}
 \cventry{Oct 2009 \textendash\space Jul 2012}{Bachelor of Science}{\href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{}{Majored in IT-Systems Engineering;\newline{}
 \textit{Bachelor's thesis:} Implementation of an iOS application for configuration of longterm ECG recorder via Bluetooth}
-\cventry{Aug 2009}{German Abitur}{Bohnstedt Gymnasium}{Luckau, Germany}{}{Advanced courses: Mathematics and English.}
+\cventry{Aug 2009}{German Abitur}{Bohnstedt Gymnasium}{Luckau, Germany}{}{}
+%{Advanced courses: Mathematics and English}
 
 \section{Experience}
-\cvexperience{Since Jul 2017}{Software Engineer}{\href{https://open.hpi.de}{openHPI}, \href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{Lead of the mobile apps with focus on the \href{https://apps.apple.com/us/app/openhpi/id1146509753}{iOS application}.}
-\cvexperience{Mar 2016 \textendash\space Oct 2017}{Freelancer}{Potsdam, Germany}{}{Full Stack Software Developer \& Consultant.}
-\cvexperience{Oct 2015 \textendash\space Jun 2017}{Teaching Assistent}{\href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{Mentoring student teams for the Global Team-based Product Innovation course  (ME310).}
-\cvexperience{Mar 2014 \textendash\space Jun 2017}{Student Assistent}{\href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{\textit{Chair:} Enterprise Platform and Integration Concepts;\newline{}
-Soccer analytics with an interactive tactic board using geospatial data.}
+\cvexperience{Since Jul 2017}{Software Engineer}{\href{https://open.hpi.de}{openHPI}, \href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{
+\begin{itemize}
+	\item Lead for the concept, development and maintenance of a native mobile applications for the HPI learning platform \href{https://open.hpi.de}{\textit{openHPI}}
+	\item Continuous development of \href{https://open.hpi.de}{\textit{openHPI}} with focus on public APIs and  accessibility
+	\item Leading the working group for user experience in the \href{https://open.hpi.de}{\textit{openHPI}} development team:\newline{}conducting regular meetings as well as planning and implementing improvements
+\end{itemize}
+}
+%\cvexperience{Mar 2016 \textendash\space Oct 2017}{Freelancer}{Potsdam, Germany}{}{Full Stack Software Developer \& Consultant.}
+\cvexperience{Oct 2015 \textendash\space Jun 2017}{Teaching Assistant}{\href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{Mentoring student teams for the \href{https://hpi.de/uebernickel/teaching/global-team-based-innovation-gti-design-thinking.html}{Global Team-based Product Innovation course (ME310)}}
+\cvexperience{Mar 2014 \textendash\space Jun 2017}{Student Assistant}{\href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{\textit{Chair:} Enterprise Platform and Integration Concepts;\newline{}
+Soccer analytics with an interactive tactic board using geospatial data}
 \cvexperience{Apr 2013 \textendash\space Sep 2013}{Software Developer Intern}{\href{http://www.sap.com/research}{SAP Research}}{Belfast, United Kingdom}{\textit{Department:} Next Business and Technologies;\newline{}
-Developing a business process simulation that relies on BPMN models.}
-\cvexperience{Aug 2012 \textendash\space Feb 2013}{Mobile Developer Intern}{\href{http://www.getemed.net/en/}{Getemed AG}}{Teltow, Germany}{Developing an \href{https://www.youtube.com/watch?v=23DS2Je_MEg}{iOS application} to configure longterm ECG recorders.}
+Developing a business process simulation that relies on BPMN models}
+\cvexperience{Aug 2012 \textendash\space Feb 2013}{Mobile Developer Intern}{\href{http://www.getemed.net/en/}{Getemed AG}}{Teltow, Germany}{Developing an \href{https://apps.apple.com/de/app/seer-1000/id674468116}{iOS application} to configure longterm ECG recorders}
 
-\section{Technical skills}
-\cvitem{Specializations}{Software Engineering, Mobile Development, UI/UX Experience}
-\cvitem{Qualifications}{Project Management, Design Thinking}
+\section{Technical Skills}
+\cvitem{Specializations}{Software Engineering, Mobile Development, Data Analysis, UI/UX Experience}
+\cvitem{Qualifications}{Project Management, \href{https://www.scrum.org/user/1274563}{Scrum (PSM I)}, Design Thinking}
 \cvitem{Interests}{Adobe Illustrator, Adobe Photoshop}
 
-\subsection{Programming Languages}
-\cvitem{Advanced}{Swift, Objective-C, Python}
-\cvitem{Intermediate}{HTML, CSS, Java, Ruby, SQL, JavaScript}
-\cvitem{Basic}{Bash, C}
+\subsection{Programming Skills}
+\cvitem{Advanced}{Python, Swift, iOS Development}
+\cvitem{Intermediate}{Ruby, SQL, HTML, CSS, JavaScript}
+%\cvitem{Basic}{}
 
 \pagebreak
 
-\section{Publications}
+\section{Publications Excerpt}
+\cvpublication{Sep 2022}{\href{http://dx.doi.org/10.1109/LWMOOCS53067.2022.9927873}{Stay at Home and Learn: Did the COVID-19 Pandemic Influence Mobile\newline{}Learning in MOOCs?}}{M. Bothe, Ch. Meinel}{Proceedings of the  2022 IEEE Learning With MOOCS (LWMOOCS)}
+\cvpublication{Nov 2021}{\href{http://dx.doi.org/10.1007/978-3-030-90677-1_5}{Video Consumption with Mobile Applications in a Global Enterprise MOOC Context}}{M. Bothe, F. Schwerer, Ch. Meinel}{Innovations in Learning and Technology for the Workplace and Higher Education (TLIC 2021)}
 \cvpublication{Jun 2021}{\href{https://doi.org/110.1145/3430895.3460151}{The Impact of Mobile Learning on Students' Self-Test Behavior in MOOCs}}{M. Bothe, Ch. Meinel}{Eighth ACM Conference on Learning @ Scale 2021 (L@S '21)}
 \cvpublication{Sep 2020}{\href{https://doi.org/10.1109/LWMOOCS50143.2020.9234368}{When Do Learners Rewatch Videos in MOOCs?}}{M. Bothe, Ch. Meinel}{Proceedings of the  2020 IEEE Learning With MOOCS (LWMOOCS)}
-\cvpublication{Sep 2020}{\href{https://doi.org/10.1109/LWMOOCS50143.2020.9234338}{On the Potential of Automated Downloads for MOOC Content on Mobile Devices}}{M. Bothe, Ch. Meinel}{Proceedings of the  2020 IEEE Learning With MOOCS (LWMOOCS)}
+\cvpublication{Sep 2020}{\href{https://doi.org/10.1109/LWMOOCS50143.2020.9234338}{On the Potential of Automated Downloads for MOOC Content on Mobile\newline{}Devices}}{M. Bothe, Ch. Meinel}{Proceedings of the  2020 IEEE Learning With MOOCS (LWMOOCS)}
 \cvpublication{April 2020}{\href{https://doi.org/10.1109/EDUCON45650.2020.9125145}{On the Acceptance and Effects of Recapping Self-Test Questions in MOOCs}}{M. Bothe, J. Renz, Ch. Meinel}{Proceedings of the 2020 IEEE Global Engineering Education Conference (EDUCON)}
 \cvpublication{May 2019}{\href{https://doi.org/10.1007/978-3-030-19875-6_3}{Applied Mobile-Assisted Seamless Learning Techniques in MOOCs}}{M. Bothe, Ch. Meinel}{Digital Education: At the MOOC Crossroads Where the Interests of Academia and Business Converge}
 \cvpublication{Apr 2019}{\href{https://doi.org/10.1109/EDUCON.2019.8725043}{From MOOCs to Micro Learning Activities}}{M. Bothe, J. Renz, T. Rohloff, Ch. Meinel}{Proceedings of the 2019 IEEE Global Engineering Education Conference (EDUCON)}
-\cvpublication{Mar 2019}{\href{https://www.researchgate.net/publication/331864553_Visualizing_Content_Exploration_Traces_of_MOOC_Students}{Visualizing Content Exploration Traces of MOOC Students}}{T. Rohloff, M. Bothe, Ch. Meinel}{Proceedings of the 9th International Conference on Learning Analytics \& Knowledge (LAK19)}
-\cvpublication{Sep 2018}{\href{https://doi.org/10.1109/LWMOOCS.2018.8534685}{Towards a Better Understanding of Mobile Learning in MOOCs}}{T. Rohloff, M. Bothe, J. Renz, Ch. Meinel}{Proceedings of the 5th Learning with MOOCs Conference (LWMOOCs)}
+%\cvpublication{Mar 2019}{\href{https://www.researchgate.net/publication/331864553_Visualizing_Content_Exploration_Traces_of_MOOC_Students}{Visualizing Content Exploration Traces of MOOC Students}}{T. Rohloff, M. Bothe, Ch. Meinel}{Proceedings of the 9th International Conference on Learning Analytics \& Knowledge (LAK19)}
+%\cvpublication{Sep 2018}{\href{https://doi.org/10.1109/LWMOOCS.2018.8534685}{Towards a Better Understanding of Mobile Learning in MOOCs}}{T. Rohloff, M. Bothe, J. Renz, Ch. Meinel}{Proceedings of the 5th Learning with MOOCs Conference (LWMOOCs)}
 %\cvpublication{Nov 2017}{\href{https://doi.org/10.1145/3136907.3136931}{Supporting Multi-Device E-Learning Patterns with Second Screen Mobile Applications}}{T. Rohloff, J. Renz, M. Bothe, Ch. Meinel}{Proceedings of the 16th World Conference on Mobile and Contextual Learning (mLearn)}
 %\cvpublication{Apr 2016}{\href{https://doi.org/10.5220/0005877600270035}{Recognizing Compound Events in Spatio-Temporal Football Data}}{K. Richly, M. Bothe, T. Rohloff, C. Schwarz}{Proceedings of International Conference on Internet of Things and Big Data (IoTBD)}
 
-\section{Projects}
-\cvproject{May 2016 - Jan 2018}{\href{https://crowdfunding.correctiv.org/strassengezwitscher/blog/}{Crowdgezwitscher}}{Development of an information platform for \href{https://twitter.com/streetcoverage}{Straßengezwitscher e.V.} reporting neutrally about xenophobic demonstrations.}
-\cvproject{Mar 2014 - Jun 2017}{\href{http://hpi.de/plattner/projects/interactive-tactic-board.html}{Interactive Tactic Board for Soccer Analytics}}{Developing a interactive tactic board is a valuable help in game evaluation and training preparation, whereby coaches and professional athletes can analyze the specific way a game is built up, how a team member performs in a game.}
-\cvproject{Oct 2014 \textendash\space Jul 2015}{\href{http://me310.stanford.edu}{Global Team-based Product Innovation \& Engineering (ME310)}}{Working on a design challenge in cooperation with Stanford University. Developing a prototype of the must have features of the Audi ownership experience in 2025, using design thinking methodologies.}
-\cvprojectwithsubtitle{Mar 2012 \textendash\space Feb 2013}{\href{https://www.youtube.com/watch?v=23DS2Je_MEg}{SEER 1000 iOS Application}}{Bachelor project \& internship}{Development of an iOS application to configure the longterm ECG recorder SEER 1000 via Bluetooth.}
+\section{Projects Excerpt}
+%\cvproject{May 2016 - Jan 2018}{\href{https://crowdfunding.correctiv.org/strassengezwitscher/blog/}{Crowdgezwitscher}}{Development of an information platform for \href{https://twitter.com/streetcoverage}{Straßengezwitscher e.V.} reporting neutrally about xenophobic demonstrations.}
+\cvproject{Jun 2017 - Aug 2024}{Mobile Applications for HPI learning platform openHPI}{Developing native mobile applications for \href{https://github.com/openHPI/xikolo-ios}{iOS} and \href{https://github.com/openHPI/xikolo-android}{Android} for the HPI learning platform \href{https://open.hpi.de}{\textit{openHPI}}, which provide a streamlined design, optimized interactions and complementary features tailored to a mobile use.}
+\cvproject{Mar 2014 - Jun 2017}{Interactive Tactic Board for Soccer Analytics}{Developing a interactive tactic board is a valuable help in game evaluation and training preparation, whereby coaches and professional athletes can analyze the specific way a game is built up, how a team member performs in a game.}
+\cvproject{Oct 2014 \textendash\space Jul 2015}{\href{https://hpi.de/uebernickel/teaching/global-team-based-innovation-gti-design-thinking.html}{Global Team-based Product Innovation \& Engineering (ME310)}}{Working on a design challenge in cooperation with Stanford University. Developing a prototype of the must have features of the Audi ownership experience in 2025, using design thinking methodologies.}
+\cvprojectwithsubtitle{Mar 2012 \textendash\space Feb 2013}{\href{https://apps.apple.com/de/app/seer-1000/id674468116}{SEER 1000 iOS Application}}{Bachelor project \& Internship}{Development of an iOS application to configure the longterm ECG recorder SEER 1000 via Bluetooth.}
 
 \section{Others}
 \cvitem{Languages}{German (native), English (fluent)}
-\cvitem{Sports}{Functional Fitness, Bouldering, Cycling}
-\cvitem{Interests}{Cooking, Traveling, Family}
+\cvitem{Sports}{Functional Fitness, Cycling, Rowing}
+\cvitem{Interests}{Cooking, Family, Traveling}
 
 \end{document}
