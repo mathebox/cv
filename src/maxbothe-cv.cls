@@ -79,7 +79,7 @@
 \newcommand{\cvexperience}[5]{\cventry{#1}{#2}{#3}{#4}{}{#5}}
 \newcommand{\cvproject}[3]{\cventry{#1}{#2}{}{}{}{#3}}
 \newcommand{\cvprojectwithsubtitle}[4]{\cventry{#1}{#2}{#3}{}{}{#4}}
-\newcommand{\cvpublication}[4]{\cventry{#1}{#2}{}{}{}{#3\\#4}}
+\newcommand{\cvpublication}[4]{\cventry{#1}{#2}{}{}{}{#3. #4}}
 
 \AtEndPreamble{%
     \AtBeginDocument{%
