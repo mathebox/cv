@@ -1,0 +1,5 @@
+*.pdf
+.texpadtmp
+confidential.tex
+forcepublic.tex
+letter/*

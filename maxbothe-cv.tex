@@ -1,0 +1,137 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+% possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+\documentclass[10pt,a4paper,sans]{maxbothe-cv}
+
+\newboolean{public}
+% true -> show public version
+% false -> show confidential version
+\setboolean{public}{true}
+
+% Do not change. This forces the public version if the respective file exists.
+\IfFileExists{forcepublic}{\setboolean{public}{true}}
+
+\ifthenelse{\boolean{public}}{
+\AtEndPreamble{%
+      \AtEndDocument{%
+          \label{lastpage}%
+          \cfoot{\color{color2}\itshape Last update: \today}%
+      }%
+     }%
+}{}
+
+
+% Remove dot at the end of a eventry
+\usepackage{xpatch}
+\xpatchcmd{\cventry}{.\strut}{\strut}{}{}
+
+
+% personal data
+\name{Max}{Bothe}
+%\title{}                       % optional, remove / comment the line if not wanted
+\email{me@maxbothe.de}                         % optional, remove / comment the line if not wanted
+\homepage{maxbothe.de}                            % optional, remove / comment the line if not wanted
+\social[linkedin]{maxbothe}                         % optional, remove / comment the line if not wanted
+\social[github]{mathebox}                          % optional, remove / comment the line if not wanted
+\social[researchgate][www.researchgate.net/profile/Max-Bothe]{ Max Bothe}
+%\extrainfo{additional information}                % optional, remove / comment the line if not wanted
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+\ifthenelse{\boolean{public}}{
+  \photo[76pt][0pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+}
+
+\ifthenelse{\boolean{public}}{}{
+  \InputIfFileExists{confidential}
+}
+
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+
+\section{Skills}
+\cvitem{Specializations}{Software Engineering, Data Analysis, Mobile Development,  UI/UX Design}
+\cvitem{Qualifications}{Project Management, \href{https://www.scrum.org/user/1274563}{Scrum (PSM I)}, Design Thinking}
+
+\subsection{Programming}
+\cvitem{Advanced}{Python, SQL, Swift, iOS Development}
+\cvitem{Intermediate}{Ruby, Backend Development}
+\cvitem{Basic}{Frontend Development}
+
+\subsection{Other}
+\cvitem{Interests}{Adobe Illustrator, Adobe Photoshop}
+\cvitem{Languages}{German (native), English (fluent)}
+
+\section{Experience}
+\cvexperience{Since Jul 2017}{Senior Software Engineer}{\href{https://open.hpi.de}{openHPI}, \href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{
+\begin{itemize}
+	\item Main responsible for the concept and development of the mobile applications for the HPI learning platform used by hundreds of thousands of mobile learners \texttt{(Swift, Kotlin)}
+	\item Contributed to the design and development of \href{https://open.hpi.de}{\textit{openHPI}}, focusing on public APIs, accessibility and improvements to the user experience, impacting millions of users and key partners such as SAP and WHO \texttt{(Ruby on Rails, HTML5, JS, JSON:API)}
+    \item Led the working group for user experience: conducting regular meetings as well as planning and implementing improvements \texttt{(Figma)}
+    \item Collaborated with project partners and mentored new colleagues and student assistants
+\end{itemize}
+}
+%\cvexperience{Mar 2016 \textendash\space Oct 2017}{Freelancer}{Potsdam, Germany}{}{Full Stack Software Developer \& Consultant.}
+\cvexperience{Oct 2015 \textendash\space Jun 2017}{Teaching Assistant}{\href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{Mentored student teams in project management and taught design thinking methodologies for the course \href{https://hpi.de/uebernickel/teaching/global-team-based-innovation-gti-design-thinking.html}{Global Team-based Product Innovation}}
+\cvexperience{Mar 2014 \textendash\space Jun 2017}{Student Assistant}{\href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{
+Developed and designed an interactive tactic board for soccer analytics using geospatial data\newline{}
+\texttt{(HTML5, JS, Django, SQL, SAP HANA)}}
+\cvexperience{Apr 2013 \textendash\space Sep 2013}{Software Developer Intern}{\href{http://www.sap.com/research}{SAP Research}}{Belfast, United Kingdom}{Developed a business process simulation that relies on BPMN models\newline{}
+\texttt{(Spring, SQL)}}
+\cvexperience{Aug 2012 \textendash\space Feb 2013}{Mobile Developer Intern}{\href{http://www.getemed.net/en/}{Getemed AG}}{Teltow, Germany}{Developed an \href{https://apps.apple.com/de/app/seer-1000/id674468116}{iOS application} to configure longterm ECG recorders\newline{}
+\texttt{(Objective-C, MFi technology by Apple)}}
+
+%\pagebreak
+
+\section{Education}
+\cventry{Since Jul 2017}{Research Associate/Ph.D. Student}{\href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{}{
+\begin{itemize}
+	\item Researched the characteristic behavior and requirements of mobile learners in MOOCs
+	\item Designed and implemented new features to support mobile learners in network-independent and short, interspersed learning activities
+	\item Conducted several studies with thousand learners: formulating hypotheses and creating appropriate study designs (e.g., observational studies, randomized controlled trials, surveys)
+\end{itemize}
+}
+\cventry{}{\textmd{\textit{(Cont.: Research Associate/Ph.D. Student)}}}{}{}{}{
+\begin{itemize}
+	\item Analyzed large data sets with statistical methods to better understand learners' behavior and their learning achievements \texttt{(custom reporting tools of the platform, Python, SQL, ElasticSearch, ETL, pandas, seaborn, scipy, scikit-learn)}
+\end{itemize}
+}
+\cventry{Oct 2013 \textendash\space Jun 2017}{Master of Science}{\href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{}{Majored in IT-Systems Engineering (Grade: 1.1)\newline{}
+\textit{Master's thesis:} From MOOCs to Micro Learning: Optimizing mobile video-based learning}
+\cventry{Oct 2014 \textendash\space Jul 2015}{Joint Project on Global Team-based Product Innovation \& Engineering}{\newline{}Stanford University}{California, USA}{}{Participated successfully in the ME310 course series collaborating as a joint team-of-teams}
+\cventry{Oct 2009 \textendash\space Jul 2012}{Bachelor of Science}{\href{http://hpi.de/}{Hasso Plattner Institute}}{Potsdam, Germany}{}{Majored in IT-Systems Engineering (Grade: 1.8)\newline{}
+\textit{Bachelor's thesis:} Implementation of an iOS application for configuration of longterm ECG recorders via Bluetooth}
+%\cventry{Aug 2009}{German Abitur}{Bohnstedt Gymnasium}{Luckau, Germany}{}{Advanced courses: Mathematics and English}
+
+\section{Projects (Excerpt)}
+%\cvproject{May 2016 - Jan 2018}{\href{https://crowdfunding.correctiv.org/strassengezwitscher/blog/}{Crowdgezwitscher}}{Development of an information platform for \href{https://twitter.com/streetcoverage}{Straßengezwitscher e.V.} reporting neutrally about xenophobic demonstrations.}
+\cvproject{Jun 2017 - Aug 2024}{Mobile Applications for the HPI Learning Platform}{Developed native mobile applications for \href{https://github.com/openHPI/xikolo-ios}{iOS} and \href{https://github.com/openHPI/xikolo-android}{Android} for the HPI learning platform \href{https://open.hpi.de}{\textit{openHPI}}, which provide a streamlined design, optimized interactions and complementary features tailored to mobile use cases}
+\cvproject{Mar 2014 - Jun 2017}{Interactive Tactic Board for Soccer Analytics}{Developed an interactive tactics board based on geospatial data as a valuable tool for game analysis and training preparation, allowing coaches and professional athletes to analyze the specific way a game is set up and how team members perform in a game}
+\cvproject{Oct 2014 \textendash\space Jul 2015}{\href{https://hpi.de/uebernickel/teaching/global-team-based-innovation-gti-design-thinking.html}{Audi Ownership Experience in 2025}}{Worked on a design challenge in cooperation with Stanford University, developing a prototype of the must have features of the Audi ownership experience in 2025 using design thinking methodologies}
+\cvprojectwithsubtitle{Mar 2012 \textendash\space Feb 2013}{\href{https://apps.apple.com/de/app/seer-1000/id674468116}{SEER 1000 iOS Application}}{Bachelor project \& Internship}{Developed of an iOS application to configure longterm ECG recorders via Bluetooth}
+
+\section{Publications (Excerpt)}
+\cvpublication{Sep 2022}{\href{http://dx.doi.org/10.1109/LWMOOCS53067.2022.9927873}{Stay at Home and Learn: Did the COVID-19 Pandemic Influence Mobile\newline{}Learning in MOOCs?}}{M. Bothe, Ch. Meinel}{Proceedings of the  2022 IEEE Learning With MOOCS (LWMOOCS)}
+\cvpublication{Nov 2021}{\href{http://dx.doi.org/10.1007/978-3-030-90677-1_5}{Video Consumption with Mobile Applications in a Global Enterprise MOOC Context}}{M. Bothe, F. Schwerer, Ch. Meinel}{Innovations in Learning and Technology for the Workplace and Higher Education (TLIC 2021)}
+\cvpublication{Jun 2021}{\href{https://doi.org/110.1145/3430895.3460151}{The Impact of Mobile Learning on Students' Self-Test Behavior in MOOCs}}{M. Bothe, Ch. Meinel}{Eighth ACM Conference on Learning @ Scale 2021 (L@S '21)}
+%\cvpublication{Sep 2020}{\href{https://doi.org/10.1109/LWMOOCS50143.2020.9234368}{When Do Learners Rewatch Videos in MOOCs?}}{M. Bothe, Ch. Meinel}{Proceedings of the  2020 IEEE Learning With MOOCS (LWMOOCS)}
+\cvpublication{Sep 2020}{\href{https://doi.org/10.1109/LWMOOCS50143.2020.9234338}{On the Potential of Automated Downloads for MOOC Content on Mobile\newline{}Devices}}{M. Bothe, Ch. Meinel}{Proceedings of the  2020 IEEE Learning With MOOCS (LWMOOCS)}
+\cvpublication{Apr 2020}{\href{https://doi.org/10.1109/EDUCON45650.2020.9125145}{On the Acceptance and Effects of Recapping Self-Test Questions in MOOCs}}{M. Bothe, J. Renz, Ch. Meinel}{Proceedings of the 2020 IEEE Global Engineering Education Conference (EDUCON)}
+\cvpublication{May 2019}{\href{https://doi.org/10.1007/978-3-030-19875-6_3}{Applied Mobile-Assisted Seamless Learning Techniques in MOOCs}}{M. Bothe, Ch. Meinel}{Digital Education: At the MOOC Crossroads Where the Interests of Academia and Business Converge}
+\cvpublication{Apr 2019}{\href{https://doi.org/10.1109/EDUCON.2019.8725043}{From MOOCs to Micro Learning Activities}}{M. Bothe, J. Renz, T. Rohloff, Ch. Meinel}{Proceedings of the 2019 IEEE Global Engineering Education Conference (EDUCON)}
+%\cvpublication{Mar 2019}{\href{https://www.researchgate.net/publication/331864553_Visualizing_Content_Exploration_Traces_of_MOOC_Students}{Visualizing Content Exploration Traces of MOOC Students}}{T. Rohloff, M. Bothe, Ch. Meinel}{Proceedings of the 9th International Conference on Learning Analytics \& Knowledge (LAK19)}
+%\cvpublication{Sep 2018}{\href{https://doi.org/10.1109/LWMOOCS.2018.8534685}{Towards a Better Understanding of Mobile Learning in MOOCs}}{T. Rohloff, M. Bothe, J. Renz, Ch. Meinel}{Proceedings of the 5th Learning with MOOCs Conference (LWMOOCs)}
+%\cvpublication{Nov 2017}{\href{https://doi.org/10.1145/3136907.3136931}{Supporting Multi-Device E-Learning Patterns with Second Screen Mobile Applications}}{T. Rohloff, J. Renz, M. Bothe, Ch. Meinel}{Proceedings of the 16th World Conference on Mobile and Contextual Learning (mLearn)}
+%\cvpublication{Apr 2016}{\href{https://doi.org/10.5220/0005877600270035}{Recognizing Compound Events in Spatio-Temporal Football Data}}{K. Richly, M. Bothe, T. Rohloff, C. Schwarz}{Proceedings of International Conference on Internet of Things and Big Data (IoTBD)}
+
+\end{document}
